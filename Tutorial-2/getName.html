@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+			<title>Python-Get Name</title>
+		</head>
+	<body>
+<p>Click the button to get your coordinates.</p>
+
+<p id="demo"></p>
+
+
+		<h1>Get name Form</h1>
+		<form method="POST" action="processname.cgi"> 
+			<input type="hidden" id="lat" name="lat" class="lat">
+			<input type="hidden" id="lng" name="lng" class="lng">
+			<input type="text" id="firstName" name="firstName" class="firstName" placeholder="Enter First Name" required="required"/>
+			<input type="text" id="lastName" name="lastName" class="lastName" placeholder="Enter Last Name" required="required"/>
+			<input type="submit" id="buttonSubmit" name="buttonSubmit" class="buttonSubmit" value="Submit Name"/>
+		</form>
+<script>
+$(document).ready(getLocation());
+
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    document.getElementById("lng").value=position.coords.longitude;
+    document.getElementById("lat").value=position.coords.latitude;
+}
+</script>
+	</body>
